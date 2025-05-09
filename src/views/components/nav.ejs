@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="/css/components/nav.css">
+<link rel="stylesheet" href="/css/components/search_suggestions.css">
+
+<nav>
+	<div class="center_nav">
+		<% if (Nav.new) { %>
+			<div class="new" id="$new">
+				<a href="/<%= Nav.new %>">
+					<i class="i_new"></i>
+				</a>
+			</div>
+		<% } %>
+
+		<form>
+			<button id="$btn_return">
+				<i class="i_return"></i>
+			</button>
+				<input type="search" id="$search" placeholder="Buscar" value="<%- Nav.search_value %>">
+				<button id="$reset_search">
+					<i class="i_reset_search"></i>
+				</button>
+				<button id="$btn_search">
+					<i class="i_search"></i>
+				</button>
+			<div id="$search_suggestions" class="search_suggestions"></div>
+		</form>
+
+		<div class="options" id="$options">
+			<% if (Nav.home) { %>
+				<a href="/">
+					<i class="i_home"></i>
+				</a>
+			<% } %>
+
+			<% if (Nav.my_profile) { %>
+				<a href="/u/<%= Nav.my_profile %>">
+					<i class="i_user"></i>
+				</a>
+			<% } %>
+
+			<a href="/<%= Nav.log_in %>">
+				<% if (Nav.log_in == 'log_in') { %>
+					<%= 'Acceder' %>
+				<% } else { %>
+					<%= 'Salir' %>
+				<% } %>
+			</a>
+		</div>
+	</div>
+</nav>
+
+<script src="/js/nav.js" type="module"></script>

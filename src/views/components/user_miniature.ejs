@@ -1,0 +1,18 @@
+<div class="user">
+	<a href="/u/<%= user._id %>">
+		<% if (user.profile_img) { %>
+			<img
+				src="/uploads_img/<%= user.profile_img %>"
+				alt="<%= user.name %>"
+			>
+		<% } %>
+		<h2
+			<% if (user.job) { %>
+				style="border-bottom: 1px solid var(--colorC);"
+			<% } %>
+		><%= user.name %></h2>
+		<% if (user.job) { %>
+			<p><%= user.job %></p>
+		<% } %>
+	</a>
+</div>
