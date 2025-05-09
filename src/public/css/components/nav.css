@@ -1,0 +1,269 @@
+/* -- ---- --- icons --- --- --- */
+
+.i_new { content: url('/img/ico/new.svg'); }
+.i_return { content: url('/img/ico/return.svg'); }
+.i_reset_search { content: url('/img/ico/reset_search.svg'); }
+.i_search { content: url('/img/ico/search.svg'); }
+.i_user { content: url('/img/ico/user.svg'); }
+.i_home { content: url('/img/ico/home.svg'); }
+
+.i_reset_search { width: 10px; }
+.i_new,
+.i_return,
+.i_search,
+.i_user,
+.i_home {
+	height: 26px;
+	max-width: 26px;
+}
+
+
+
+
+/* -- ---- --- nav --- --- --- */
+
+nav {
+	box-sizing: content-box;
+	position: fixed;
+	z-index: 3;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 34px;
+	/* background-color: #2B4162aa; */
+	background-color: rgba(19, 28, 43, .72);
+	/*
+	background: no-repeat fixed center center;
+	background-size: cover;
+	*/
+
+	/*
+	background-color: var(--colorB);
+	*/
+	/*
+	background: url('https://okdiario.com/img/2020/05/20/la-nasa-cree-que-hay-un-universo-paralelo-en-el-que-el-tiempo-va-hacia-atras.jpg') var(--colorB);
+	*/
+
+	/*background: url('/img/fondo.jpg');*/
+
+	/*
+	background-color: var(--colorA);
+	background: url('https://oedimdecor.com/wp-content/uploads/2019/03/fotomural-universo-estrellas1-1333x1000.jpg');
+	background: url('https://1.bp.blogspot.com/-xtdWYb9Ikd0/T3s_BOAILXI/AAAAAAAAC-4/wT8pnx83hgc/s1600/El-Universo.jpg');
+	background: url('https://curiosidades.com/wp-content/uploads/2013/04/universe-space-nebula-stars-x-px-hd.jpg');
+	*/
+	padding: 5px 0;
+	/*border-bottom: 1px solid var(--colorC);*/
+	box-shadow: 0 0 14px var(--colorD);
+}
+
+.center_nav {
+	width: 90%;
+	height: 100%;
+	margin: auto;
+	display: flex;
+}
+
+
+
+
+/* --- --- --- options --- --- --- */
+
+nav .options {
+	width: 200%;
+	display: flex;
+}
+
+.center_nav > *,
+nav .options a {
+	width: 100%;
+}
+
+
+
+
+/* --- --- --- new --- --- --- */
+
+.new a {
+	display: flex;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+}
+
+
+
+
+/* --- --- --- search --- --- --- */
+
+nav form {
+	position: relative;
+	display: flex;
+	border: none;
+	justify-content: center;
+	align-items: center;
+	/*background-color: var(--colorC);*/
+}
+
+nav form input {
+	min-width: 0;
+	width: 900%;
+	background-color: transparent;
+	color: var(--colorD);
+	font-size: 16px;
+	padding: 7px 44px 7px 14px;
+	border: 1px solid transparent;
+	border-bottom: 1px solid var(--colorC);
+	background-color: var(--colorC);
+	border-radius: 7px;
+}
+
+nav form button:first-child,
+nav form input,
+nav form input[type="search"]::-webkit-search-cancel-button {
+	display: none;
+	outline: none;
+}
+
+nav button {
+	outline: none;
+	margin: 0 14px;
+	border: none;
+	width: 100%;
+	height: 26px;
+	cursor: pointer;
+	background-color: transparent;
+}
+
+#\$reset_search {
+	display: none;
+	width: auto;
+	padding-right: 10px;
+	padding-left: 14px;
+	background-color: var(--colorC);
+	margin: 0;
+	height: 100%;
+	border-radius: 0 7px 7px 0;
+	position: absolute;
+	right: calc(100%/11 + 27px);
+}
+
+
+
+
+/* --- --- --- options --- --- --- */
+
+.options a {
+	font-family: 'Poppins', Arial, Helvetica, sans-serif;
+	font-weight: 600;
+	color: var(--colorC);
+	text-decoration: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+
+
+@media screen and (min-width: 680px) {
+	.i_new,
+	.i_return,
+	.i_search,
+	.i_user,
+	.i_home {
+		height: 20px;
+		max-width: 26px;
+	}
+
+
+
+
+	/* --- --- ---- nav  --- --- --- */
+
+	.center_nav {
+		width: 640px;
+	}
+
+
+
+
+	/* --- --- ---- new  --- --- --- */
+
+	.new a {
+		justify-content: left;
+		margin-left: 20px;
+	}
+
+
+
+
+	/* --- --- ---- search --- --- --- */
+
+	.center_nav form {
+		width: 150%;
+	}
+
+	nav form {
+		/*border: 1px solid var(--colorC);*/
+		border-radius: 7px;
+		padding-right: 14px;
+		background-color: var(--colorC);
+	}
+
+	nav form:focus {
+		padding: 20px;
+	}
+
+	nav form input {
+		width: 100%;
+		border-radius: 7px 0 0 7px;
+		border: none;
+		display: block;
+		padding: 7px 14px;
+	}
+
+	nav #\$btn_search {
+		width: auto;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: left;
+	}
+
+	#\$reset_search {
+		position: relative;
+		right: auto;
+		padding-left: 0;
+	}
+
+	nav button {
+		margin: 0;
+	}
+
+
+
+
+	/* --- --- ---- options --- --- --- */
+
+	nav .options {
+		width: 100%;
+		justify-content: flex-end;
+	}
+
+	nav .options a {
+		width: auto;
+		margin-right: 20px;
+	}
+
+
+
+
+	@media screen and ( min-width: 1000px ) {
+		/* -- --- --- nav --- --- --- */
+
+		.center_nav {
+			width: 900px;
+		}
+	}
+}

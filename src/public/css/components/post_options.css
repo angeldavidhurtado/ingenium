@@ -1,0 +1,146 @@
+.publication .options {
+	background-color: var(--colorC);
+	max-width: 300px;
+	width: calc(100% - 40px);
+	margin: auto;
+	border-radius: 7px;
+	color: var(--colorD);
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+}
+
+.publication .options img {
+	border-radius: 7px 7px 0 0;
+	width: 100%;
+	height: 171px;
+	object-fit: cover;
+	cursor: pointer;
+}
+
+.publication .inputs {
+	padding: 0 20px;
+	margin-top: 20px;
+	/*
+	height: 249px;
+	overflow-y: auto;
+	*/
+}
+
+.publication .inputs h2 {
+	text-align: center;
+	/*line-height: 0;*/
+	margin: 0 0 20px 0;
+	padding: 0;
+}
+
+.publication .options label,
+.publication .options .label {
+	position: relative;
+	display: block;
+	margin: 20px 0 7px 0;
+}
+
+
+
+
+/* checkbox */
+
+.check {
+	display: flex !important;
+	align-items: center;
+}
+
+.check_text {
+	margin-left: 7px;
+	width: 88%;
+}
+.check span { cursor: pointer; }
+.check input { display: none; }
+
+.checkmark {
+	width: 20px;
+	height: 20px;
+	border-radius: 7px;
+	border: 1px solid var(--colorB);
+	background-color: var(--colorC);
+	transition: all .3s ease;
+}
+
+.check input:hover:not(:checked) + .checkmark,
+.check input:not(:checked).checkmark:hover {
+	background-color: var(--colorB);
+	opacity: .7;
+}
+
+.check input:checked + .checkmark { background-color: var(--colorB); }
+.check input:checked + .checkmark::after {
+	content: '';
+	display: block;
+	width: 5px;
+	height: 8px;
+	border: solid var(--colorC);
+	border-width: 0 3px 3px 0;
+	position: relative;
+	top: 2px;
+	left: 5px;
+	transform: rotate(45deg);
+}
+
+.bold { font-weight: bold; }
+
+
+
+
+.publication [type=file] {
+	display: none;
+}
+
+.upload_img {
+	background-color: var(--colorB);
+	position: absolute;
+	top: 73px;
+	width: 100%;
+}
+
+.publication #\$img_err {
+	margin: 0 auto;
+	text-align: center;
+	font-style: italic;
+	max-width: 70%;
+	padding: 0;
+	color: var(--colorC);
+}
+
+
+
+
+/* --- --- --- Gender --- --- --- */
+
+.publication .gender {
+	margin-top: 20px;
+}
+
+.publication .gender input {
+	width: 100%;
+	border: none;
+	border-bottom: 1px solid var(--colorB);
+	background-color: transparent;
+	padding: 7px 10px;
+	outline: none;
+	font-size: 16px;
+}
+
+.publication .gender ul {
+	list-style: none;
+	height: 122px;
+	overflow-y: auto;
+	margin-top: 14px;
+}
+
+.publication .gender .check {
+	margin: 0 0 14px 0;
+}
+
+.publication .gender li:last-child .check {
+	margin-bottom: 0;
+}

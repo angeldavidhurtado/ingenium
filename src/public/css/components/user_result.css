@@ -1,0 +1,46 @@
+.user {
+	margin-bottom: 20px;
+}
+
+.user a:hover {
+	filter:
+		brightness(1.1)
+		contrast(110%)
+		saturate(110%)
+	;
+}
+
+.user a {
+	display: block;
+	background-color: var(--colorB);
+	border-radius: 7px;
+	text-decoration: none;
+	color: var(--colorC);
+	text-align: center;
+	padding: 22px 20px 5px 20px;
+	transition: all .3s ease;
+}
+
+.user img {
+	width: 170px;
+	height: 170px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 2px solid var(--colorC);
+	vertical-align: top;
+	margin-bottom: 20px;
+}
+
+.user h2 {
+	font-size: 20px;
+	padding-bottom: 15px;
+}
+
+.user p {
+	padding: 15px 0 11px 0;
+}
+
+.user *::selection {
+	background-color: var(--colorC);
+	color: var(--colorB);
+}

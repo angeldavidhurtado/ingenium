@@ -1,0 +1,78 @@
+main {
+	background-color: var(--colorA);
+	width: 100%;
+}
+
+.posts {
+	/*max-width: 960px;*/
+	width: 100%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+}
+
+.column_posts {
+	margin: 0 10px;
+	padding-top: 40px;
+	max-width: 300px;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	top: -20px;
+}
+
+
+
+
+/* --- --- --- post --- --- --- */
+
+.post {
+	width: 100%;
+	margin-bottom: -20px;
+	position: relative;
+}
+
+.post::after {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 100px;
+	background: linear-gradient( rgba(43,65,98,0), var(--colorA) 60%);
+	position: absolute;
+	bottom: 0;
+}
+
+.post a {
+	width: 100%;
+	max-width: 100%;
+	display: block;
+	background-color: var(--colorC);
+	text-decoration: none;
+	border-radius: 7px 7px 0 0;
+	max-height: 463px; /* 463px original */
+	overflow: hidden;
+	transition: all ease .3s;
+}
+
+.post:hover a {
+	transform: translateY(-40px);
+}
+
+.post h2 {
+	text-align: center;
+	color: var(--colorB);
+	border-bottom: 1px solid var(--colorB);
+	padding: 15px 0;
+	width: calc(100% - 40px);
+	margin: auto;
+	font-size: 20px;
+}
+
+.post p {
+	padding: 20px;
+	line-height: 25px;
+	max-height: 365px;
+	color: var(--colorD);
+}
+
+/* .add:hover input { text-decoration: underline; } */

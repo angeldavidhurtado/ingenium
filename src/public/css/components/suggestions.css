@@ -1,0 +1,14 @@
+.suggestions {
+	padding-top: 80px;
+}
+
+.suggestions > h2 {
+	text-align: center;
+	font-size: 30px;
+	margin-bottom: 20px;
+	color: var(--colorC);
+}
+
+.normal {
+	font-style: normal;
+}

@@ -1,0 +1,280 @@
+body {
+	background-color: var(--colorA);
+}
+
+.publication {
+	padding-top: 20px;
+}
+
+.publication textarea,
+.publication button,
+.edit button,
+.publication select {
+	outline: none;
+}
+
+.publication button,
+.edit button,
+.publication select {
+	cursor: pointer;
+}
+
+.publication .btn_upload_img,
+.publication button {
+	transition: all .3s ease;
+}
+
+
+
+
+/* delete*/
+
+.publication .delete {
+	max-width: 960px;
+	width: calc(100% - 40px);
+	margin: auto;
+	margin-bottom: 20px;
+}
+
+.publication .delete button {
+	border: none;
+	padding: 10px;
+	border-radius: 7px;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.publication #\$delete {
+	border: 1px solid var(--colorC);
+	background-color: var(--colorA);
+	color: var(--colorC);
+	width: 119px;
+}
+
+.publication #\$delete:hover {
+	background-color: var(--colorC);
+	color: var(--colorA);
+}
+
+.publication #\$delete_msg {
+	display: none;
+	position: fixed;
+	z-index: 3;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #2B4162ee;
+	align-items: center;
+	justify-content: center;
+}
+
+.publication #\$delete_msg.appear_delete_msg {
+	animation: .3s ease appear_opacity;
+}
+
+.publication #\$delete_msg.disappear_delete_msg {
+	animation: .3s ease disappear_opacity forwards;
+}
+
+@keyframes appear_opacity {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+
+@keyframes disappear_opacity {
+	from {opacity: 1;}
+	to {opacity: 0;}
+}
+
+.publication #\$delete_msg div {
+	border-radius: 7px;
+	background-color: var(--colorC);
+	text-align: center;
+	padding: 20px;
+	max-width: 341px;
+	width: calc(100% - 40px);
+}
+
+.publication #\$delete_msg p {
+	color: var(--colorD);
+	margin: 10px 0;
+}
+
+.publication #\$delete_msg button {
+	padding: 10px;
+	width: 60px;
+	background-color: var(--colorB);
+	color: var(--colorC);
+	margin: 10px 5px 0 5px;
+}
+
+.publication #\$delete_msg button:hover {
+	background-color: var(--colorC);
+	color: var(--colorB);
+}
+
+/* article */
+
+.publication article,
+.publication textarea {
+	max-width: 940px;
+	background-color: var(--colorC);
+	color: var(--colorD);
+	border-radius: 7px 7px 0 0;
+	padding: 20px 60px 30px 60px;
+}
+
+.publication h1,
+.publication h2,
+.publication h3 {
+	color: var(--colorB);
+	border-bottom: 1px solid var(--colorB);
+}
+.publication h1 { font-size: 35px; padding: 15px 0; margin-bottom: 25px; text-align: center; }
+.publication h2 { font-size: 27px; padding: 30px 0; }
+.publication h3 { font-size: 20px; padding: 20px 0; }
+
+.publication p {
+	font-size: 16px;
+	line-height: 25px;
+	padding-bottom: 25px;
+}
+
+.publication img {
+	display: block;
+	max-width: 100%;
+	border-radius: 7px;
+	margin: 0 auto;
+}
+
+/* textarea */
+
+.publication .textarea {
+	background-color: var(--colorC);
+	max-width: 1000px;
+	margin: 0 auto 20px auto;
+	padding: 20px 0;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	box-shadow: 0 0 16px black;
+	border-radius: 7px;
+}
+
+.publication textarea {
+	padding: 0 20px;
+	border-radius: 0;
+	height: 40vh;
+	font-size: 16px;
+	line-height: 25px;
+	display: block;
+	width: 100%;
+	word-wrap: break-word;
+	resize: none;
+	border: none;
+}
+
+/* .edit */
+
+.edit {
+	max-width: 1000px;
+	margin: 10px auto 0 auto;
+	position: sticky;
+	z-index: 2;
+	bottom: 48px;
+	text-align: right;
+	padding-right: 10px;
+	height: 0;
+}
+
+.edit button {
+	/*float: right;*/
+	border: none;
+	border-radius: 7px;
+	background-color: var(--colorB);
+	color: var(--colorC);
+	padding: 10px;
+	margin-right: 10px;
+	width: 119px;
+	font-weight: bold;
+	font-size: 16px;
+	outline: none;
+	transition: all .3s ease;
+}
+
+.edit button:hover {
+	background-color: var(--colorC);
+	color: var(--colorB);
+}
+
+/* err */
+
+.err {
+	display: none;
+	margin: 10px auto 0 auto;
+	background-color: var(--colorB);
+	color: var(--colorC);
+	padding: 20px 0;
+	border-radius: 7px;
+	position: sticky;
+	z-index: 2;
+	bottom: 58px;
+	left: 20px;
+	max-width: 960px;
+	width: calc(100% - 40px);
+}
+
+.err .list_container {
+	max-height: 46px;
+	overflow: auto;
+	padding: 0 20px;
+}
+
+.err ul {
+	margin-left: 20px;
+}
+
+.err li {
+	margin-top: 10px;
+}
+
+.err li:first-child {
+	margin-top: 0;
+}
+
+
+
+
+@media screen and ( min-width: 720px ) {
+	/* --- --- --- post --- --- --- */
+	
+	.publication h1 {
+		font-size: 35px;
+	}
+
+	.publication article,
+	.publication textarea {
+		margin: 0 auto;
+	}
+}
+
+
+
+
+@media screen and ( max-width: 555px ) {
+	.publication article,
+	.publication textarea {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
+
+
+
+
+@media screen and ( max-width: 480px ) {
+	.publication h1 { font-size: 22px; }
+	.publication h2 { font-size: 20px; }
+	.publication h3 { font-size: 18px; }
+}
