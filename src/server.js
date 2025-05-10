@@ -31,15 +31,20 @@ app.use(session({
   cookie: {
     maxAge: 14 * 24 * 60 * 60 * 1000, // 14 days in ms
     secure: process.env.NODE_ENV === 'production',
-    httpOnly: true
+    sameSite: 'none',
+    secure: true
   }
 }))
 
 app.use(helmet());
 app.use(compression());
-/*
-app.use(cors({ origin: 'https://mi-frontend.com', credentials: true }))
-*/
+app.use(cors({
+  origin: 'https://royalexplanation.onrender.com',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}))
+
 
 // Settings
 app.set('PORT', process.env.PORT || 80)
