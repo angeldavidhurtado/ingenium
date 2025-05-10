@@ -8,9 +8,8 @@ const cors = require('cors');
 const passport = require('passport')
 
 // load .env in produduction
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();a
-}
+if (process.env.NODE_ENV !== 'production')
+	require('dotenv').config()
 
 // Initialization
 const app = express()
@@ -22,9 +21,7 @@ const {
 	DB_PORT,
 	DB_NAME
 } = process.env
-const DB_URI = DB_URI_SRV
-	? DB_URI_SRV
-	: `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`
+const DB_URI = DB_URI_SRV || `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'un-secreto-super-fuerte',
@@ -45,11 +42,7 @@ app.use(session({
 app.use(helmet());
 app.use(compression());
 /*
-app.use(cors({
-  origin: 'https://mi-frontend.com',
-  methods: ['GET','POST','PUT','DELETE'],
-  credentials: true
-}));
+app.use(cors({ origin: 'https://mi-frontend.com', credentials: true }))
 */
 
 // Settings
@@ -61,15 +54,6 @@ app.use(express.static(`${__dirname}/public`))
 // Middlewares
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
-app.use(session({
-	secret: 'secret_string',
-	resave: true,
-	saveUninitialized: true,
-	cookie: {
-		//secure: true,
-		sameSite: true
-	}
-}))
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
