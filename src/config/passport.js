@@ -21,8 +21,18 @@ passport.serializeUser((user, done) => {
 	done(null, user._id)
 })
 
-passport.deserializeUser((_id, done) => {
+passport.deserializeUser(async (id, done) => {
+	try {
+    // Puedes usar findById que es más directo:
+    const user = await UserModel.findById(id)
+    done(null, user)
+  } catch (err) {
+    done(err, null)
+  }
+
+	/*
 	UserModel.findOne({_id}, (err, user) => {
 		done(err, user)
 	})
+	*/
 })
