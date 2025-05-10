@@ -7,6 +7,11 @@ const compression = require('compression');
 const cors = require('cors');
 const passport = require('passport')
 
+// load .env in produduction
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();a
+}
+
 // Initialization
 const app = express()
 require('./config/passport')
@@ -25,7 +30,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'un-secreto-super-fuerte',
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({
+  store: mongoStore.create({
     mongoUrl: DB_URI, // URI of Atlas o local
     collectionName: 'sessions', // name of collection-data where saved sessions
     ttl: 14 * 24 * 60 * 60 // 14 days in sec
