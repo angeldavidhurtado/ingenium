@@ -7,10 +7,6 @@ const compression = require('compression');
 const cors = require('cors');
 const passport = require('passport')
 
-// load .env in produduction
-if (process.env.NODE_ENV !== 'production')
-	require('dotenv').config()
-
 // Initialization
 const app = express()
 require('./config/passport')
