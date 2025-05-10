@@ -1,11 +1,24 @@
 const express = require('express')
 const session = require('express-session')
 const flash = require('connect-flash')
+const helmet = require('helmet');
+const compression = require('compression');
+const cors = require('cors');
 const passport = require('passport')
 
 // Initialization
 const app = express()
 require('./config/passport')
+
+app.use(helmet());
+app.use(compression());
+/*
+app.use(cors({
+  origin: 'https://mi-frontend.com',
+  methods: ['GET','POST','PUT','DELETE'],
+  credentials: true
+}));
+*/
 
 // Settings
 app.set('PORT', process.env.PORT || 80)
