@@ -30,9 +30,11 @@ app.use(session({
   }),
   cookie: {
     maxAge: 14 * 24 * 60 * 60 * 1000, // 14 days in ms
+    /*
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'none',
     secure: true
+    */
   }
 }))
 
