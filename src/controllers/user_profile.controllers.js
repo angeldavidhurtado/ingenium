@@ -3,9 +3,6 @@ const UserModel = require('../models/User')
 
 const userCtrl = {}
 
-
-
-
 userCtrl.user_profile = async (req, res) => {
 	const req_user_id = req.params.user_id
 
@@ -25,24 +22,6 @@ userCtrl.user_profile = async (req, res) => {
 	else
 		match.public = true
 
-		/*
-	const posts = await PostModel.aggregate([
-		{$match: match},
-		{$group: {
-			_id: '$type',
-			posts: {
-				$push: {
-					_id: '$_id',
-					authors: '$authors',
-					img_miniature: '$img_miniature',
-					title: '$title',
-					description: '$description',
-				}
-			}
-		}}
-	])
-	*/
-
 	const posts = await PostModel
 		.find(match)
 		.select('url title description')
@@ -55,24 +34,6 @@ userCtrl.user_profile = async (req, res) => {
 	}
 	if (!user.job && user.is_author) user.job = 'Profesión'
 	res.render('user_profile', {Nav, user, posts})
-
-
-
-
-	/*
-	PostModel.create({
-		authors: ['Ángel', 'David'],
-		type: 'recognition',
-		public: true,
-		url: 'upo',
-		title: 'upo',
-		description: 'asdf',
-		content: '<h1>upo</h1>\n\n<p>asdf</p>'
-	})
-	*/
 }
-
-
-
 
 module.exports = userCtrl
