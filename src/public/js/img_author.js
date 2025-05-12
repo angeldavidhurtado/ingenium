@@ -19,7 +19,7 @@ $file_img_profile.onchange = async function() {
 
 	const img_was_uploaded = await img_res.json()
 	if (img_was_uploaded.img) {
-		const url_img = `/uploads_img/${img_was_uploaded.img}`
+		const url_img = `${img_was_uploaded.img}`
 		$imgProfile.src = url_img
 	} else await msg('Oye, pásame una img en formato jpg png gif webp y hasta de 1MB')
 }

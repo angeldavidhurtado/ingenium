@@ -30,14 +30,14 @@ helpers.upload_img = (req, res) => {
 			if (error_upload)
 				reject(error_upload)
 			else
-				resolve(req.file.filename)
+				resolve(req.file.originalname)
 		})
 	})
 }
 
 
 
-
+/*
 const storage = multer.diskStorage({
 	destination: `${__dirname}/../public/uploads_img`,
 	filename: (req, file, cb) => {
@@ -49,10 +49,14 @@ const storage = multer.diskStorage({
 		// cb(null, file.originalname)
 	}
 })
+*/
+
+const storage = multer.memoryStorage()
 
 multer_upload_img = multer({
-	storage, // storage: name
-	limits: {fileSize: 1000000}, // 1Mb
+	// storage, // storage: name
+	storage,
+	limits: {fileSize: 1_000_000}, // 1Mb
 	fileFilter: (req, file, cb) => {
 		let ext = /\/\w+$/.exec(file.mimetype)
 		if (!ext) return cb('bad format')

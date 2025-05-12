@@ -10,14 +10,13 @@
 		src=<%= user.cover_img ? `/uploads_img/${user.cover_img}` : '/img/background.webp' %>
 		id="$presentation_background"
 	>
-
 	<div class="img_profile">
 		<% if (user.profile_img || user.is_author) { %>
 			<img
 				id="$imgProfile"
 				src=<%= 
 					user.profile_img
-					? `/uploads_img/${user.profile_img}`
+					? `${user.profile_img}`
 					: '/img/ico/user.svg'
 				%>
 				alt="<%= user.name %>"

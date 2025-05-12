@@ -62,11 +62,11 @@ async function img_miniature(req, res, img_name) {
 
 
 async function img_author(req, res, img_name) {
-	//const User = await UserModel.findOne({name: req.user.name})
+	const db = req.user
 	const was_img_saved = await save_img_to_db(
 		req.user,
 		'profile_img',
-		img_name
+		req.file
 	)
 	res.json(was_img_saved)
 }
@@ -86,14 +86,16 @@ async function img_author_cover(req, res, img_name) {
 
 
 async function save_img_to_db(db, field, img) {
+	console.log(db)
+	const { buffer, mimetype } = img
+	const base64  = buffer.toString('base64')
+	const dataURI = `data:${mimetype};base64,${base64}`
 	try {
-		const previous_img = db[field]
-		db[field] = img
+		db[field] = dataURI
+		db.profile_img_content_type = mimetype
 		await db.save()
-		await delete_img(previous_img)
 		return {img: db[field]}
 	} catch(e) {
-		await delete_img(img)
 		return {err: 'Fallo en la base de datos'}
 	}
 }

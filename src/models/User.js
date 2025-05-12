@@ -4,7 +4,8 @@ const bcrypt = require('bcrypt')
 const UserSchema = new Schema({
 	name: {type: String, required: true, unique: true},
 	pass: {type: String, required: true},
-	profile_img: {type: String},
+	profile_img: {type: String}, // Base64
+	profile_img_content_type: { type: String, required: true }, // ej. "image/jpeg"
 	cover_img: {type: String},
 	job: {type: String},
 	genresWorks: {type: Object}, // Array

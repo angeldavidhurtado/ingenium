@@ -2,16 +2,14 @@ const router = require('express').Router()
 const PublicationModel = require('../models/Publication')
 
 
-
-
-// Index
+// index
 async function getPosts(size = 12) {
-	// db.mycoll.aggregate( { $sample: { size: 1 } } )
 	return await PublicationModel.aggregate([
 		{$sample: {size}},
 		{$match: {public: true}}
 	]).project('title description')
 }
+
 
 router.get('/', async (req, res) => {
 	const auth = req.isAuthenticated()
@@ -26,8 +24,6 @@ router.get('/', async (req, res) => {
 })
 
 
-
-
 router.post('/posts', async (req, res) => {
 	const ids = req.body
 	console.log('ids', ids.length)
@@ -35,8 +31,6 @@ router.post('/posts', async (req, res) => {
 	console.log()
 	res.json({ok: true})
 })
-
-
 
 
 module.exports = router
