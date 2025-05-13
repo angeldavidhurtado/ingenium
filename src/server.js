@@ -4,7 +4,7 @@ const mongoStore  = require('connect-mongo')
 const flash = require('connect-flash')
 const helmet = require('helmet');
 const compression = require('compression');
-// const cors = require('cors');
+const cors = require('cors');
 const passport = require('passport')
 
 // Initialization
@@ -38,14 +38,12 @@ app.use(session({
 
 app.use(helmet());
 app.use(compression());
-/*
 app.use(cors({
   origin: 'https://royalexplanation.onrender.com',
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }))
-  */
 /*
 const isProd = process.env.NODE_ENV === 'production';
 const allowedProd = [
