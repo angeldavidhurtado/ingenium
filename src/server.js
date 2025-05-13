@@ -45,35 +45,6 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }))
-/*
-const isProd = process.env.NODE_ENV === 'production';
-const allowedProd = [
-  'https://royalexplanation.onrender.com'
-];
-
-app.use(cors({
-  origin: (origin, callback) => {
-    // 1) En DESARROLLO: permitimos TODO (incluye origin null)
-    if (!isProd) {
-      return callback(null, true);
-    }
-
-    // 2) En PRODUCCIÓN: sólo dominios listados
-    if (allowedProd.includes(origin)) {
-      return callback(null, true);
-    }
-
-    // 3) Si llegamos aquí, rechazamos
-    const msg = 'Origen CORS no permitido: ' + origin;
-    console.error(msg);
-    console.error('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
-    return callback(new Error(msg), false);
-  },
-  credentials: true,
-  optionsSuccessStatus: 204
-}));
-*/
-
 
 
 // Settings
