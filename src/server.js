@@ -4,7 +4,7 @@ const mongoStore  = require('connect-mongo')
 const flash = require('connect-flash')
 const helmet = require('helmet');
 const compression = require('compression');
-const cors = require('cors');
+// const cors = require('cors');
 const passport = require('passport')
 
 // Initialization
@@ -38,12 +38,43 @@ app.use(session({
 
 app.use(helmet());
 app.use(compression());
+/*
 app.use(cors({
   origin: 'https://royalexplanation.onrender.com',
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }))
+  */
+/*
+const isProd = process.env.NODE_ENV === 'production';
+const allowedProd = [
+  'https://royalexplanation.onrender.com'
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // 1) En DESARROLLO: permitimos TODO (incluye origin null)
+    if (!isProd) {
+      return callback(null, true);
+    }
+
+    // 2) En PRODUCCIÓN: sólo dominios listados
+    if (allowedProd.includes(origin)) {
+      return callback(null, true);
+    }
+
+    // 3) Si llegamos aquí, rechazamos
+    const msg = 'Origen CORS no permitido: ' + origin;
+    console.error(msg);
+    console.error('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
+    return callback(new Error(msg), false);
+  },
+  credentials: true,
+  optionsSuccessStatus: 204
+}));
+*/
+
 
 
 // Settings
