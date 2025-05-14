@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const express = require('express')
 const session = require('express-session')
 const mongoStore  = require('connect-mongo')
@@ -38,20 +39,28 @@ app.use(session({
 }))
 
 app.use(helmet())
-app.use(helmet.contentSecurityPolicy({
-  directives: {
-    defaultSrc: ["'self'"],
-    styleSrc: ["'self'", "https://cdn.jsdelivr.net", "https://fonts.googleapis.com", "'nonce-{{cspNonce}}'"],
-    scriptSrc: ["'self'", "https://cdn.jsdelivr.net", "'nonce-{{cspNonce}}'"],
-    fontSrc: ["'self'", "https://cdn.jsdelivr.net", "https://fonts.gstatic.com"],
-    imgSrc: ["'self'", "data:"],
-    connectSrc: ["'self'"],
-    objectSrc: ["'none'"],
-    scriptSrcAttr: ["'nonce-{{cspNonce}}'"],
-    styleSrcAttr: ["'nonce-{{cspNonce}}'"],
-    upgradeInsecureRequests: [],
-  }
-}))
+app.use((req, res, next) => {
+  res.locals.cspNonce = crypto.randomBytes(16).toString('base64');
+  next();
+});
+app.use((req, res, next) => {
+  const nonce = res.locals.cspNonce;
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'", "https://cdn.jsdelivr.net", "https://fonts.googleapis.com", `'nonce-${nonce}'`],
+      scriptSrc: ["'self'", "https://cdn.jsdelivr.net", `'nonce-${nonce}'`],
+      fontSrc: ["'self'", "https://cdn.jsdelivr.net", "https://fonts.gstatic.com"],
+      imgSrc: ["'self'", "data:"],
+      connectSrc: ["'self'"],
+      objectSrc: ["'none'"],
+      scriptSrcAttr: [`'nonce-${nonce}'`],
+      styleSrcAttr: [`'nonce-${nonce}'`],
+      upgradeInsecureRequests: [],
+    }
+  })(req, res, next);
+});
+
 app.use(compression())
 app.use(cors({
   origin: 'https://royalexplanation.onrender.com',
