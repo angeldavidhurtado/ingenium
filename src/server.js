@@ -37,8 +37,20 @@ app.use(session({
   }
 }))
 
-app.use(helmet());
-app.use(compression());
+app.use(helmet())
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],
+    styleSrc: ["'self'", "https://cdn.jsdelivr.net"],
+    scriptSrc: ["'self'", "https://cdn.jsdelivr.net"],
+    fontSrc: ["'self'", "https://cdn.jsdelivr.net"],
+    imgSrc: ["'self'", "data:"],
+    connectSrc: ["'self'"],
+    objectSrc: ["'none'"],
+    upgradeInsecureRequests: [],
+  }
+}))
+app.use(compression())
 app.use(cors({
   origin: 'https://royalexplanation.onrender.com',
   credentials: true,
