@@ -2,7 +2,6 @@ const express = require('express')
 const session = require('express-session')
 const mongoStore  = require('connect-mongo')
 const flash = require('connect-flash')
-const helmet = require('helmet');
 const compression = require('compression');
 const cors = require('cors');
 const passport = require('passport')
@@ -37,7 +36,6 @@ app.use(session({
   }
 }))
 
-app.use(helmet())
 app.use(compression())
 app.use(cors({
   origin: 'https://royalexplanation.onrender.com',
