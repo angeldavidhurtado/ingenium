@@ -174,13 +174,10 @@ postCtrl.delete_publication = async (req, res) => {
 	const is_author = is_the_author(user._id, publication)
 	if (!is_author) return res.redirect('/')
 
-	await delete_img(publication.img_miniature)
-	const was_deleted = await PublicationModel
-		.deleteOne({_id: url})
-
+	// await delete_img(publication.img_miniature)
+	const was_deleted = await PublicationModel.deleteOne({_id: url})
 	removeGenres(publication)
-
-	res.send(was_deleted.n ? 'ok' : 'fail')
+	res.send(was_deleted.deletedCount ? 'ok' : 'fail')
 }
 
 function removeGenres(post) {
