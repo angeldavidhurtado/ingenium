@@ -41,12 +41,14 @@ app.use(helmet())
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self'"],
-    styleSrc: ["'self'", "https://cdn.jsdelivr.net"],
-    scriptSrc: ["'self'", "https://cdn.jsdelivr.net"],
-    fontSrc: ["'self'", "https://cdn.jsdelivr.net"],
+    styleSrc: ["'self'", "https://cdn.jsdelivr.net", "https://fonts.googleapis.com", "'nonce-{{cspNonce}}'"],
+    scriptSrc: ["'self'", "https://cdn.jsdelivr.net", "'nonce-{{cspNonce}}'"],
+    fontSrc: ["'self'", "https://cdn.jsdelivr.net", "https://fonts.gstatic.com"],
     imgSrc: ["'self'", "data:"],
     connectSrc: ["'self'"],
     objectSrc: ["'none'"],
+    scriptSrcAttr: ["'nonce-{{cspNonce}}'"],
+    styleSrcAttr: ["'nonce-{{cspNonce}}'"],
     upgradeInsecureRequests: [],
   }
 }))
