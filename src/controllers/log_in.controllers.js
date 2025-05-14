@@ -46,11 +46,10 @@ logInCtrl.sign_in = async (req, res) => {
 	user.pass = await user.encryptPass(pass)
 	await user.save()
 
-	// optimizar cn ? :
 	req.login({name: user_name}, err => {
 		if (!err)
 			return res.redirect('/')
-		res.redirect('/sign_in')
+		res.redirect('/log_in')
 	})
 }
 
