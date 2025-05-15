@@ -29,10 +29,4 @@ passport.deserializeUser(async (id, done) => {
   } catch (err) {
     done(err, null)
   }
-
-	/*
-	UserModel.findOne({_id}, (err, user) => {
-		done(err, user)
-	})
-	*/
 })

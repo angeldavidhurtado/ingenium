@@ -23,16 +23,15 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   store: mongoStore.create({
-    mongoUrl: DB_URI, // URI of Atlas o local
-    collectionName: 'sessions', // name of collection-data where saved sessions
-    ttl: 14 * 24 * 60 * 60 // 14 days in sec
+    mongoUrl: DB_URI,
+    collectionName: 'sessions',
+    ttl: 14 * 24 * 60 * 60
   }),
   cookie: {
-    maxAge: 14 * 24 * 60 * 60 * 1000, // 14 days in ms
-    // secure: process.env.NODE_ENV === 'production',
+    maxAge: 14 * 24 * 60 * 60 * 1000,
     httpOnly: true,
-    secure: true,
-    sameSite: 'none'
+    secure: false,        // <- deshabilita HTTPS
+    sameSite: 'lax'       // <- permite envío en peticiones normales
   }
 }))
 
