@@ -26,9 +26,8 @@ router.get('/', async (req, res) => {
 
 router.post('/posts', async (req, res) => {
 	const ids = req.body
-	console.log('ids', ids.length)
-	console.log((await getPosts()).length)
-	console.log()
+	// console.log('ids', ids.length)
+	// console.log((await getPosts()).length)
 	res.json({ok: true})
 })
 
