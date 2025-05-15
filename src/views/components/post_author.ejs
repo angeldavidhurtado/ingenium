@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="/css/components/post_author.css">
+
+<div class="publication">
+	<% if (is_author) { %>
+		<%- include('post_options') %>
+		<div
+			class="delete"
+			<% if (!publication.id) { %>
+				style="display: none;"
+			<% } %>
+		>
+			<button id="$delete">Eliminar</button>
+			<div id="$delete_msg">
+				<div>
+					<p>¿Estas seguro de borrar esta publicación?</p>
+					<button id="$delete_no">No</button>
+					<button id="$delete_ok">Si</button>
+				</div>
+			</div>
+		</div>
+		<div class="textarea">
+			<textarea id="$textarea"><%- publication.content %></textarea>
+		</div>
+	<% } %>
+	<div>
+		<article id="$publication">
+			<%- publication.content %>
+		</article>
+		<%- include('data_post') %>
+	</div>
+</div>
+<% if (is_author) { %>
+	<div class="err" id="$err">
+		<div class="list_container">
+			<ul id="$list_err"></ul>
+		</div>
+	</div>
+	<div class="edit">
+		<button id="$save">Guardar</button>
+	</div>
+<% } %>
+
+<% if (is_author) { %>
+	<script src="js/create_article.js" type="module"></script>
+<% } %>

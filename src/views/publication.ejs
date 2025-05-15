@@ -47,7 +47,11 @@
 		</header>
 		<!---->
 		<main>
-			<%- include('components/post', {is_author, publication}) %>
+			<% if (is_author) { %>
+				<%- include('components/post_author', {is_author, publication}) %>
+			<% } else { %>
+				<%- include('components/post', {is_author, publication}) %>
+			<% } %>
 			<% if (is_author) { %>
 				<div style="margin-top: 50px;"></div>
 			<% } %>

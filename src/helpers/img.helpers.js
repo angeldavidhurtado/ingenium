@@ -36,21 +36,6 @@ helpers.upload_img = (req, res) => {
 }
 
 
-
-/*
-const storage = multer.diskStorage({
-	destination: `${__dirname}/../public/uploads_img`,
-	filename: (req, file, cb) => {
-		cb(null,
-			// Nombre aleatorio único
-			uuid() + extname(file.originalname).toLocaleLowerCase()
-		)
-		// nombre original
-		// cb(null, file.originalname)
-	}
-})
-*/
-
 const storage = multer.memoryStorage()
 
 multer_upload_img = multer({
@@ -67,7 +52,6 @@ multer_upload_img = multer({
 		if (valid_format) return cb(null, true)
 		cb('bad format')
 	}
-	//dest: `${__dirname}/public/uploads_img`}
 }).single('img') // el name del form con el que resibirá el arcchivo
 
 
