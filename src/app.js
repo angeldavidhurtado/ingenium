@@ -1,3 +1,6 @@
+require('dotenv').config()
+require('./database')
+
 const express = require('express')
 const session = require('express-session')
 const mongoStore  = require('connect-mongo')
@@ -72,6 +75,4 @@ app.use(require('./routes/publication.routes'))
 app.use(require('./routes/user_profile.routes'))
 app.get('*', (req, res) => {res.redirect('/')})
 
-app.listen(app.get('PORT'), () => {
-	console.log(`Server on port ${app.get('PORT')}`)
-})
+module.exports = app
