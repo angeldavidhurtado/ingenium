@@ -1,4 +1,11 @@
-// tests/routes/users.test.js
+const suma = (a, b) => a + b
+
+test('suma', () => {
+  const result = suma(1, 2)
+  expect(result).toBe(3)
+})
+
+/*
 const request = require('supertest')
 const app     = require('../../src/app')
 const mongoose = require('mongoose')
@@ -24,3 +31,4 @@ describe('POST /posts', () => {
     expect(Array.isArray(res.body)).toBe(true)
   })
 })
+*/

@@ -38,6 +38,7 @@
     "supertest": "^7.1.1"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "verbose": true
   }
 }
