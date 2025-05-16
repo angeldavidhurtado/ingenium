@@ -27,22 +27,24 @@ const {
 } = process.env
 const DB_URI = DB_URI_SRV || `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`
 
-app.use(session({
-  secret: process.env.SESSION_SECRET || 'un-secreto-super-fuerte',
-  resave: false,
-  saveUninitialized: false,
-  store: mongoStore.create({
-    mongoUrl: DB_URI,
-    collectionName: 'sessions',
-    ttl: 14 * 24 * 60 * 60
-  }),
-  cookie: {
-    maxAge: 14 * 24 * 60 * 60 * 1000,
-    httpOnly: true,
-    secure: false,        // <- deshabilita HTTPS
-    sameSite: 'lax'       // <- permite envío en peticiones normales
-  }
-}))
+if (process.env.NODE_ENV != 'test') {
+  app.use(session({
+    secret: process.env.SESSION_SECRET || 'un-secreto-super-fuerte',
+    resave: false,
+    saveUninitialized: false,
+    store: mongoStore.create({
+      mongoUrl: DB_URI,
+      collectionName: 'sessions',
+      ttl: 14 * 24 * 60 * 60
+    }),
+    cookie: {
+      maxAge: 14 * 24 * 60 * 60 * 1000,
+      httpOnly: true,
+      secure: false,        // <- deshabilita HTTPS
+      sameSite: 'lax'       // <- permite envío en peticiones normales
+    }
+  }))
+}
 
 app.use(compression())
 app.use(cors({

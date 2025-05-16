@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles --forceExit",
-    "start": "node src/app",
-    "dev": "nodemon src/app"
+    "start": "cross-env NODE_ENV=production node src/app",
+    "dev": "cross-env NODE_ENV=development nodemon src/app",
+    "test": "cross-env NODE_ENV=test jest --detectOpenHandles --forceExit"
   },
   "nodemonConfig": {
     "ignore": [
@@ -33,6 +33,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "jest": "^29.7.0",
     "mongodb-memory-server": "^10.1.4",
     "supertest": "^7.1.1"

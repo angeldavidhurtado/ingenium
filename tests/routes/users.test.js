@@ -1,4 +1,5 @@
 const supertest = require('supertest')
+const mongoose = require('mongoose')
 const { app, server } = require('../../src/app')
 
 const api = supertest(app)
@@ -9,6 +10,7 @@ test('suma', async () => {
   expect(result).toBe(3)
 })
 
-afterAll(() => {
-  server.close()
+afterAll(async () => {
+  await new Promise(resolve => server.close(resolve));
+  await mongoose.connection.close()
 })
