@@ -23,7 +23,6 @@ router.get('/', async (req, res) => {
 	res.render('index', {Nav, posts})
 })
 
-
 router.post('/posts', async (req, res) => {
 	const ids = req.body
 	// console.log('ids', ids.length)
