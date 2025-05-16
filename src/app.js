@@ -1,5 +1,4 @@
 require('dotenv').config()
-require('./database')
 
 const express = require('express')
 const session = require('express-session')
@@ -8,8 +7,15 @@ const flash = require('connect-flash')
 const compression = require('compression');
 const cors = require('cors');
 const passport = require('passport')
+const { connectDB, mongoose } = require('./database')
 
 // Initialization
+connectDB()
+  .then(() => console.log('Mongo conectado'))
+  .catch(err => {
+    console.error('Error de conexión a Mongo:', err)
+    process.exit(1)
+  })
 const app = express()
 require('./config/passport')
 
@@ -75,4 +81,9 @@ app.use(require('./routes/publication.routes'))
 app.use(require('./routes/user_profile.routes'))
 app.get('*', (req, res) => {res.redirect('/')})
 
-module.exports = app
+const PORT = app.get('PORT')
+const server = app.listen(PORT, () => {
+	console.log(`Server on port ${PORT}`)
+})
+
+module.exports = { app, server }

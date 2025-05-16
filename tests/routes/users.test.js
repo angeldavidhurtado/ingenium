@@ -1,34 +1,14 @@
-const suma = (a, b) => a + b
+const supertest = require('supertest')
+const { app, server } = require('../../src/app')
 
-test('suma', () => {
+const api = supertest(app)
+
+const suma = (a, b) => a + b
+test('suma', async () => {
   const result = suma(1, 2)
   expect(result).toBe(3)
 })
 
-/*
-const request = require('supertest')
-const app     = require('../../src/app')
-const mongoose = require('mongoose')
-const { MongoMemoryServer } = require('mongodb-memory-server')
-
-let mongoServer
-
-beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create()
-  const uri = mongoServer.getUri()
-  await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+afterAll(() => {
+  server.close()
 })
-
-afterAll(async () => {
-  await mongoose.disconnect()
-  await mongoServer.stop()
-})
-
-describe('POST /posts', () => {
-  it('debe responder 200 y devolver un array', async () => {
-    const res = await request(app).get('/posts')
-    expect(res.status).toBe(200)
-    expect(Array.isArray(res.body)).toBe(true)
-  })
-})
-*/

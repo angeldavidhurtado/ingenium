@@ -1,4 +1,4 @@
-const {connect} = require('mongoose')
+const mongoose = require('mongoose')
 
 const {
 	DB_URI_SRV,
@@ -8,6 +8,14 @@ const {
 } = process.env
 const DB_URI = DB_URI_SRV || `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`
 
-connect(DB_URI)
-	.then(db => console.log('Mongo connected') )
-	.catch(err => console.log(err) )
+function connectDB() {
+	return mongoose.connect(DB_URI, {
+		serverSelectionTimeoutMS: 5000,
+		socketTimeoutMS: 45000
+	})
+}
+
+module.exports = {
+	connectDB,
+	mongoose
+}

@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --detectOpenHandles --forceExit",
-    "start": "node src/index",
-    "dev": "nodemon src/index"
+    "start": "node src/app",
+    "dev": "nodemon src/app"
   },
   "nodemonConfig": {
     "ignore": [
