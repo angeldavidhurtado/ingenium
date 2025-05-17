@@ -29,13 +29,21 @@
 	<body>
 		<header>
 			<%- include('components/nav') %>
-			<div
 				<% if (posts.posts) { %>
-					style="height: 40px; background-color: var(--colorA);"
+					<div style="height: 40px; background-color: var(--colorA);"></div>
 				<% } else { %>
-					class="banner"
+					<div class="banner">
+						<div class="presentation">
+							<div class="text">
+								<h1>Ingenium</h1>
+								<h2>Red social para matemáticos e ingenieros</h2>
+							</div>
+							<div class="img">
+								<img src="/img/ico/ingenium.svg" alt="Ingenium logo">
+							</div>
+						</div>
+					</div>
 				<% } %>
-			></div>
 		</header>
 		<main>
 			<%- include('components/posts') %>

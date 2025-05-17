@@ -114,3 +114,28 @@ iframe {
 	75% {transform: rotate(3deg);}
 	100% {transform: rotate(0);}
 }
+
+.banner {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+}
+
+.banner .presentation {
+	display: flex;
+	gap: 100px;
+	padding: 0 80px;
+	max-width: 1000px;
+}
+
+.banner .presentation .text {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	text-shadow: 0 0 30px black;
+}
+
+.banner .presentation img {
+	filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.5));
+}
