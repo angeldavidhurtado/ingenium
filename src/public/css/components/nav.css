@@ -3,7 +3,8 @@
 .i_new { content: url('/img/ico/new.svg'); }
 .i_return { content: url('/img/ico/return.svg'); }
 .i_reset_search { content: url('/img/ico/reset_search.svg'); }
-.i_search { content: url('/img/ico/search.svg'); }
+.i_search_black { content: url('/img/ico/search_black.svg'); }
+.i_search_white { content: url('/img/ico/search_white.svg'); }
 .i_user { content: url('/img/ico/user.svg'); }
 .i_home { content: url('/img/ico/home.svg'); }
 
@@ -163,6 +164,9 @@ nav button {
 	align-items: center;
 }
 
+.i_search_white { display: block; margin: auto; }
+.i_search_black { display: none; }
+
 
 
 
@@ -176,7 +180,8 @@ nav button {
 		max-width: 26px;
 	}
 
-
+	.i_search_white { display: none; }
+	.i_search_black { display: block; }
 
 
 	/* --- --- ---- nav  --- --- --- */
