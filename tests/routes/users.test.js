@@ -4,42 +4,51 @@ const { app, server } = require('../../src/app')
 
 const api = supertest(app)
 
-test('POST /posts', async () => {
-  const res = await api
-    .post('/posts')
-    // .send(payload)
-    // .set('Accept', 'application/json')
-  expect(res.status).toBe(200)
-  expect(res.body).toEqual({ ok: true })
-})
+// Endpoints que devuelven HTML:
+const htmlEndpoints = [
+  '/',
+  '/log_in',
+  '/sign_in',
+  '/search?q=a'
+]
 
-test('GET /', async () => {
-  const res = await api.get('/')
-  expect(res.text.substring(0, 15)).toBe('<!DOCTYPE html>')
-})
+describe('Suite de integración de Endpoints', () => {
+  // Hook para cerrar servidor y conexión a la BD al finalizar todos los tests
+  afterAll(async () => {
+    await new Promise(resolve => server.close(resolve))
+    await mongoose.connection.close()
+  })
 
-test('GET /', async () => {
-  const res = await api.get('/')
-  expect(res.text.substring(0, 15)).toBe('<!DOCTYPE html>')
-})
+  describe('POST /posts', () => {
+    test('Debe responder 200 y { ok: true } sin payload explícito', async () => {
+      const res = await api
+        .post('/posts')
+        // .send({ title: 'Test', body: 'Contenido' })
+        .set('Accept', 'application/json')
 
-test('GET /log_in', async () => {
-  const res = await api.get('/log_in')
-  expect(res.text.substring(0, 15)).toBe('<!DOCTYPE html>')
-})
+      // Validamos el status y la estructura del body
+      expect(res.status).toBe(200)
+      expect(res.headers['content-type']).toMatch(/application\/json/)
+      expect(res.body).toEqual({ ok: true })
+    })
 
-test('GET /sign_in', async () => {
-  const res = await api.get('/sign_in')
-  expect(res.text.substring(0, 15)).toBe('<!DOCTYPE html>')
-})
+    test('Debe devolver JSON con la clave ok', async () => {
+      const res = await api.post('/posts').set('Accept', 'application/json')
+      expect(res.body).toHaveProperty('ok')
+      expect(typeof res.body.ok).toBe('boolean')
+    })
+  })
 
-test('GET /search', async () => {
-  const res = await api.get('/search?q=a')
-  expect(res.text.substring(0, 15)).toBe('<!DOCTYPE html>')
-})
-
-
-afterAll(async () => {
-  await new Promise(resolve => server.close(resolve));
-  await mongoose.connection.close()
+  describe('GET HTML estático', () => {
+    htmlEndpoints.forEach(path => {
+      test(`GET ${path} → HTML válido (<!DOCTYPE html>)`, async () => {
+        const res = await api.get(path)
+        // Status y Content-Type
+        expect(res.status).toBe(200)
+        expect(res.headers['content-type']).toMatch(/text\/html/)
+        // Verificamos que inicie con el DOCTYPE
+        expect(res.text.startsWith('<!DOCTYPE html>')).toBe(true)
+      })
+    })
+  })
 })
