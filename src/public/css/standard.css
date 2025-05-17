@@ -115,6 +115,11 @@ iframe {
 	100% {transform: rotate(0);}
 }
 
+
+
+
+/* -- -- banner -- -- */
+
 .banner {
 	display: flex;
 	align-items: center;
@@ -136,6 +141,27 @@ iframe {
 	text-shadow: 0 0 30px black;
 }
 
+.banner .presentation .img {
+	display: flex;
+	align-items: center;
+}
+
 .banner .presentation img {
 	filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.5));
+}
+
+@media screen and (max-width: 570px) {
+	.banner .presentation {
+		gap: 20px;
+	}
+
+	.banner .presentation h2 {
+		font-size: 20px;
+	}
+}
+
+@media screen and (max-width: 570px) {
+	.banner .presentation {
+		padding: 0 40px;
+	}
 }
