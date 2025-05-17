@@ -24,6 +24,7 @@ userCtrl.user_profile = async (req, res) => {
 
 	const posts = await PostModel
 		.find(match)
+		.sort({ createdAt: -1 })
 		.select('url title description')
 
 	const Nav = {
@@ -33,6 +34,7 @@ userCtrl.user_profile = async (req, res) => {
 		log_in: auth ? 'log_out' : 'log_in'
 	}
 	if (!user.job && user.is_author) user.job = 'Profesión'
+	console.log(posts)
 	res.render('user_profile', {Nav, user, posts})
 }
 
