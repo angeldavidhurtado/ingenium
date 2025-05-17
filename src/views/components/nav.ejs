@@ -35,7 +35,11 @@
 
 			<% if (Nav.my_profile) { %>
 				<a href="/u/<%= Nav.my_profile %>">
-					<i class="i_user"></i>
+					<% if (typeof(Nav.user.profile_img) == "string") { %>
+						<img src="<%- Nav.user.profile_img  %>" alt="" class="user-picture-nav">
+					<% } else { %>
+						<i class="i_user"></i>
+					<% } %>
 				</a>
 			<% } %>
 

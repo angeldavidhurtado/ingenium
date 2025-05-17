@@ -32,6 +32,7 @@ postCtrl.new_publication = (req, res) => {
 		new: 'new',
 		home: true,
 		my_profile: req.user._id,
+		user: req.user,
 		log_in: 'log_out'
 	}
 
@@ -250,6 +251,7 @@ postCtrl.get_publication = async (req, res) => {
 		const Nav = {
 			new: auth ? 'new' : 'log_in',
 			home: true,
+			user: auth ? req.user : false,
 			my_profile: auth ? req.user._id : false,
 			log_in: auth ? 'log_out' : 'log_in'
 		}

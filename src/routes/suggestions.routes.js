@@ -16,6 +16,7 @@ router.get('/', async (req, res) => {
 	const Nav = {
 		new: auth ? 'new' : 'log_in',
 		home: false,
+		user: auth ? req.user : false,
 		my_profile: auth ? req.user._id : false,
 		log_in: auth ? 'log_out' : 'log_in'
 	}

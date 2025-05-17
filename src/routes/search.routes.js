@@ -123,6 +123,7 @@ router.get('/search', async (req, res) => {
 		new: auth ? 'new' : 'log_in',
 		home: true,
 		my_profile: auth ? req.user._id : false,
+		user: auth ? req.user : false,
 		log_in: auth ? 'log_out' : 'log_in',
 		search_value: query
 	}

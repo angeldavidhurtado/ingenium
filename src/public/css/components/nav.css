@@ -65,6 +65,11 @@ nav {
 	display: flex;
 }
 
+nav .user-picture-nav {
+	width: 33px;
+	border-radius: 50%;
+}
+
 
 
 
