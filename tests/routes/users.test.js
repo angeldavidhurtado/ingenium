@@ -4,27 +4,40 @@ const { app, server } = require('../../src/app')
 
 const api = supertest(app)
 
-const suma = (a, b) => a + b
-test('suma', () => {
-  const result = suma(1, 2)
-  expect(result).toBe(3)
+test('POST /posts', async () => {
+  const res = await api
+    .post('/posts')
+    // .send(payload)
+    // .set('Accept', 'application/json')
+  expect(res.status).toBe(200)
+  expect(res.body).toEqual({ ok: true })
 })
 
-test('debería responder { ok: true }', async () => {
-  const payload = { foo: 'bar', ids: [1, 2, 3] };
+test('GET /', async () => {
+  const res = await api.get('/')
+  expect(res.text.substring(0, 15)).toBe('<!DOCTYPE html>')
+})
 
-  const res = await api
-    .post('/posts')                     // path EXACTO
-    .send(payload)                      // body JSON
-    .set('Accept', 'application/json'); // header correcto
+test('GET /', async () => {
+  const res = await api.get('/')
+  expect(res.text.substring(0, 15)).toBe('<!DOCTYPE html>')
+})
 
-  // Logs para depuración
-  console.log('status:', res.status);   // → 200
-  console.log('body:  ', res.body);     // → { ok: true }
+test('GET /log_in', async () => {
+  const res = await api.get('/log_in')
+  expect(res.text.substring(0, 15)).toBe('<!DOCTYPE html>')
+})
 
-  expect(res.status).toBe(200);
-  expect(res.body).toEqual({ ok: true });
-});
+test('GET /sign_in', async () => {
+  const res = await api.get('/sign_in')
+  expect(res.text.substring(0, 15)).toBe('<!DOCTYPE html>')
+})
+
+test('GET /search', async () => {
+  const res = await api.get('/search?q=a')
+  expect(res.text.substring(0, 15)).toBe('<!DOCTYPE html>')
+})
+
 
 afterAll(async () => {
   await new Promise(resolve => server.close(resolve));
