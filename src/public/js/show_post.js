@@ -64,6 +64,17 @@ const Appear_Txt = new class AppearTxt {
 
 
 	group(txt) {
+		const grouped_txt = []
+		let i_page = -1
+		for (let tag of txt) {
+			if (tag instanceof HTMLHeadingElement) {
+				grouped_txt.push([])
+				i_page += 1
+			}
+			grouped_txt[i_page].push(tag)
+		}
+		return grouped_txt
+		/*
 		const grouped_txt = [[
 			txt[0],
 			txt[1]
@@ -81,6 +92,7 @@ const Appear_Txt = new class AppearTxt {
 		if (!last_group[1])
 			last_group.pop()
 		return grouped_txt
+		*/
 	}
 
 
