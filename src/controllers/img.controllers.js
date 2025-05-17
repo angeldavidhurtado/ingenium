@@ -86,7 +86,6 @@ async function img_author_cover(req, res, img_name) {
 
 
 async function save_img_to_db(db, field, img) {
-	console.log(db)
 	const { buffer, mimetype } = img
 	const base64  = buffer.toString('base64')
 	const dataURI = `data:${mimetype};base64,${base64}`
