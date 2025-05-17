@@ -3,7 +3,7 @@
 <section
 	class="presentation"
 	<% if (user.is_author) { %>
-		style="padding-bottom: 20px;"
+		style="padding-bottom: 40px;"
 	<% } %>
 >
 	<img
@@ -54,14 +54,16 @@
 		</div>
 	<% } %>
 
-	<% if (user.is_author) { %>
+	<%# if (user.is_author) { %>
+		<!--
 		<div class="img_background">
 			<label for="$file_img_background">
 				<img src="/img/ico/camera.svg"> Fondo
 			</label>
 			<input type="file" id="$file_img_background">
 		</div>
-	<% } %>
+		-->
+	<%# } %>
 </section>
 
 <% if (user.is_author) { %>
