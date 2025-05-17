@@ -121,7 +121,7 @@ body {
 	max-width: 940px;
 	background-color: var(--colorC);
 	color: var(--colorD);
-	border-radius: 7px 7px 0 0;
+	border-radius: 20px;
 	padding: 20px 60px 30px 60px;
 }
 
@@ -285,4 +285,22 @@ body {
 	.publication h1 { font-size: 22px; }
 	.publication h2 { font-size: 20px; }
 	.publication h3 { font-size: 18px; }
+}
+
+
+.publication .article_content {
+	max-width: 940px;
+	margin: auto;
+	position: relative;
+}
+
+.publication .controles {
+	width: 100%;
+	position: sticky;
+	bottom: 0;
+}
+
+.publication .controles .ancho {
+	background-color: var(--colorA);
+	width: 102%;
 }

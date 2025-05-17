@@ -22,11 +22,16 @@
 			<textarea id="$textarea"><%- publication.content %></textarea>
 		</div>
 	<% } %>
-	<div>
+	<div class="article_content">
 		<article id="$publication">
 			<%- publication.content %>
 		</article>
-		<%- include('data_post') %>
+		<div class="controles">
+			<div class="ancho">
+				<%- include('data_post') %>
+			</div>
+		</div>
+		<%#- include('data_post') %>
 	</div>
 </div>
 <% if (is_author) { %>
