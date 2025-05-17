@@ -131,9 +131,17 @@ body {
 	color: var(--colorB);
 	border-bottom: 1px solid var(--colorB);
 }
-.publication h1 { font-size: 35px; padding: 15px 0; margin-bottom: 25px; text-align: center; }
+.publication h1 { font-size: 35px; padding: 15px 0; text-align: center; }
 .publication h2 { font-size: 27px; padding: 30px 0; }
 .publication h3 { font-size: 20px; padding: 20px 0; }
+.publication h1,
+.publication h2,
+.publication h3,
+.publication h4,
+.publication h5,
+.publication h6 {
+	margin-bottom: 25px;
+}
 
 .publication p {
 	font-size: 16px;
