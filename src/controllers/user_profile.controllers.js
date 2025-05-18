@@ -24,7 +24,7 @@ userCtrl.user_profile = async (req, res) => {
 
 	const posts = await PostModel
 		.find(match)
-		.sort({ createdAt: -1 })
+		.sort({ updatedAt: -1 })
 		.select('url title description')
 
 	console.log()
