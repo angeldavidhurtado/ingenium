@@ -27,10 +27,13 @@ userCtrl.user_profile = async (req, res) => {
 		.sort({ createdAt: -1 })
 		.select('url title description')
 
+	console.log()
+
 	const Nav = {
 		new: auth ? 'new' : 'log_in',
 		home: true,
 		my_profile: auth ? (user.is_author ? false : req.user._id) : false,
+		user: auth ? req.user : false,
 		log_in: auth ? 'log_out' : 'log_in'
 	}
 	if (!user.job && user.is_author) user.job = 'Profesión'
