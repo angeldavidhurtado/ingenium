@@ -54,11 +54,11 @@ function upload_img_miniature() {
 }
 
 function upload_data() { return new Promise(async res => {
-	let url = window.location.pathname.substr(1)
+	let url = window.location.pathname.substring(1)
 
 	const genders = getGendersSelected()
 	if (!genders.length) {
-		showErr({'gender': 'Indicame al menos un género 😉'})
+		showErr({'gender': 'Indicame al menos una categoria por favor 😉'})
 		scrollTo($gender_search)
 		return res(false)
 	}
