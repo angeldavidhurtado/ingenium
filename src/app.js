@@ -45,6 +45,11 @@ app.use(session({
   }
 }))
 
+app.use((req, res, next) => {
+  res.set('Cache-Control', 'no-store')
+  next()
+})
+
 app.use(compression())
 app.use(cors({
   origin: 'https://royalexplanation.onrender.com',

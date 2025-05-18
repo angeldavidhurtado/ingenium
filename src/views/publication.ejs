@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 	<head>
+		<script>
+			window.addEventListener("pageshow", e => {
+				if (e.persisted)
+					window.location.reload()
+			})
+		</script>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!---------------------------------------------------------------------

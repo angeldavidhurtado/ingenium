@@ -10,7 +10,7 @@ async function save() {
 	this.innerHTML = 'Guardando...'
 
 	await upload_data()
-	const publication_exists = window.location.pathname.substr(1) != 'new'
+	const publication_exists = window.location.pathname.substring(1) != 'new'
 	if (publication_exists) {
 		await upload_img_miniature()
 		$new.active = true

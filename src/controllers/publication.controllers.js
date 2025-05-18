@@ -9,6 +9,7 @@ const validate_genres = require('../helpers/validate_genres.helpers')
 const User = require('../models/User')
 const { json } = require('express')
 const Publication = require('../models/Publication')
+const sanitizeHtml = require('sanitize-html')
 
 const postCtrl = {}
 
@@ -60,6 +61,7 @@ postCtrl.save_update_publication = async (req, res) => {
 	const publication = req.body
 
 	// validate post content
+	publication.content = clean_content(publication.content)
 	const err = await validate_post_content(publication)
 	if (!is_empty(err)) return res.json(err)
 
@@ -131,6 +133,7 @@ async function updateUserWorkGenres(user, genders, id_publication) {
 
 async function validate_post_content(publication) {
 	const error = {}
+	
 
 	/*
 	if (publication.url != get_url(publication.title))
@@ -155,6 +158,30 @@ async function validate_post_content(publication) {
 		error.genders = 'Portate bien  ; b'
 
 	return error
+}
+
+function clean_content(publication) {
+	const clean_publication = sanitizeHtml(publication, {
+		allowedTags: [
+			'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+			'p',
+			'strong', 'em',
+			'ul', 'ol', 'li',
+			'a',
+			'br',
+			'img', 'video', 'source',
+			'iframe',
+			'table', 'thead', 'tbody', 'tfoot', 'tr', 'th', 'td'
+		],
+		allowedAttributes: {
+			'a': ['href', 'target'],
+			'iframe': ['src', 'width', 'height', 'allow', 'referrerpolicy', 'allowfullscreen'],
+			'img': ['src'],
+			'source': ['src', 'type']
+		},
+	})
+
+	return clean_publication
 }
 
 
