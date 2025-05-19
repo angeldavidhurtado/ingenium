@@ -19,9 +19,10 @@ const postCtrl = {}
 // New
 
 postCtrl.new_publication = (req, res) => {
-	let content = '<h1>\nHola :D, coloca tu título aquí\n</h1>'
-	content += '\n\n<p>\nY con esta esta etiqueta puedes agregar párrafos\n</p>'
-	content += '\n\n<p>\nMás párrafos\n</p>'
+	let content = '<h1>\nHola, coloca tu título aquí\n</h1>'
+	content += '\n\n<p>\nAquí puedes agregar párrafos\n</p>'
+	content += '\n\n<h2>Por qué publicar</h2>'
+	content += "\n\n<p>\nConecta con matemáticos e ingenieros como tú. Comparte tus aportes, proyectos y descubrimientos de forma clara y útil. No dejes que tu trabajo se pierda: publícalo con ejemplos prácticos y muestra cómo puede ser aplicado por otros. ¡Haz visible tu conocimiento y transforma la comunidad!\n</p>"
 
 	const publication = {content, new:true}
 	// *****************
