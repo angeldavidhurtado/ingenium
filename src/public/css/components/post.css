@@ -240,11 +240,6 @@ https://blog.hostdime.com.co/optimizar-animaciones-en-css-con-la-propiedad-will-
 
 /* --- --- --- Animation disappear --- --- --- */
 
-/*
-https://www.mundodeportivo.com/uncomo/relaciones/articulo/como-ser-sensual-en-la-cama-con-un-hombre-48237.html
-https://elpais.com/cultura/2015/04/09/actualidad/1428598237_054461.html
-*/
-
 @keyframes disappear {
 	50% {transform: scale(1);}
 	to {
