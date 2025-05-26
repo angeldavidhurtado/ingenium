@@ -27,8 +27,6 @@ userCtrl.user_profile = async (req, res) => {
 		.sort({ updatedAt: -1 })
 		.select('url title description')
 
-	console.log()
-
 	const Nav = {
 		new: auth ? 'new' : 'log_in',
 		home: true,
