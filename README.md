@@ -1,7 +1,7 @@
 <br>
 
 <h1 align="center">Ingenium</h1>
-<h3 align="center">Red social para matemáticos e ingenieros</h3>
+<p align="center">Red social para matemáticos e ingenieros</p>
 
 <br>
 
