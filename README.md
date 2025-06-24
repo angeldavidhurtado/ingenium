@@ -3,6 +3,8 @@
 <h1 align="center">Ingenium</h1>
 <h3 align="center">Red social para matemáticos e ingenieros</h3>
 
+<br>
+
 Las explicaciones con tecnicismos resultan confusas para los usuarios principiantes en el tema. Este proyecto propone una solución mediante una plataforma que permite publicar artículos fácilmente y ayuda a redactar con explicaciones claras y precisas, acompañadas de ejemplos. Además, ofrece un aspecto visual atractivo que transmite calma, frescura y belleza, con el objetivo de enganchar al usuario en el tema y mejorar sus resultados en el aprendizaje.
 
 **Habilidades:** Node.js con Express, MongoDB, JavaScript, CSS, HTML, SVG, UI y UX.
